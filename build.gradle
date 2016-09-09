@@ -6,11 +6,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	//mavenLocal()
-	//maven {
-	//	url = 'http://oss.jfrog.org/oss-snapshot-local'
-	//}
-	
+	mavenLocal()
+	maven {
+		url = 'http://oss.jfrog.org/oss-snapshot-local'
+	}
+	mavenCentral()
+	/*
 	maven {
 		url = 'http://oss.jfrog.org/oss-snapshot-local'
 	}
@@ -20,6 +21,7 @@ repositories {
 	maven {
 		url "http://nexus.ssi.govt.nz/content/groups/public"
 	}
+	*/
 }
 
 configurations {
