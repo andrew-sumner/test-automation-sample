@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+<Match>
+  <Field type="nz.govt.msd.driver.ui.declarewages.DeclareWagesDetailContainer" />
+  <Or>
+    <Bug pattern="UWF_UNWRITTEN_FIELD" type="UWF_UNWRITTEN_FIELD"/>
+    <Bug pattern="NP_UNWRITTEN_FIELD" type="NP_UNWRITTEN_FIELD"/>
+  </Or>
+</Match>
+
+<Match>
+  <Field type="nz.govt.msd.driver.ui.hardship.HardshipDetailContainer" />
+  <Or>
+    <Bug pattern="UWF_UNWRITTEN_FIELD" type="UWF_UNWRITTEN_FIELD"/>
+    <Bug pattern="NP_UNWRITTEN_FIELD" type="NP_UNWRITTEN_FIELD"/>
+  </Or>
+</Match>
+
+<Match>
+  <Field type="nz.govt.msd.driver.ui.components.ProcessPortalTabBar" />
+  <Or>
+  	<Bug pattern="UWF_UNWRITTEN_FIELD" type="UWF_UNWRITTEN_FIELD"/>
+  	<Bug pattern="NP_UNWRITTEN_FIELD" type="NP_UNWRITTEN_FIELD"/>
+  </Or>
+</Match>
+
+<Match>
+  <Field type="nz.govt.msd.driver.ui.medcerts.MedCertsDetailContainer" />
+  <Or>
+  	<Bug pattern="UWF_UNWRITTEN_FIELD" type="UWF_UNWRITTEN_FIELD"/>
+  	<Bug pattern="NP_UNWRITTEN_FIELD" type="NP_UNWRITTEN_FIELD"/>
+  </Or>
+</Match>
+
+<Match>
+  <Field type="nz.govt.msd.driver.ui.ongoingapps.OngoingAppsDetailContainer" />
+  <Or>
+  	<Bug pattern="UWF_UNWRITTEN_FIELD" type="UWF_UNWRITTEN_FIELD"/>
+  	<Bug pattern="NP_UNWRITTEN_FIELD" type="NP_UNWRITTEN_FIELD"/>
+  </Or>
+</Match>
+
+</FindBugsFilter>
