@@ -113,12 +113,12 @@
 	
 	
 	
-======================================================================================================================================================================================
-== APPENDIX 1: SETTING UP GRADLE WRAPPER TO WORK BEHIND FIREWALL
-======================================================================================================================================================================================
+---
+# APPENDIX 1: SETTING UP GRADLE WRAPPER TO WORK BEHIND FIREWALL
 
 1. CREATE gradle.properties FILE to allow gradle to get through the proxy
 
+```
 C:\Java\gradle_user_home\gradle.properties
 systemProp.http.proxyHost=nwsa001
 systemProp.http.proxyPort=8080
@@ -131,18 +131,21 @@ systemProp.https.proxyPort=8080
 #systemProp.https.proxyUser=XXXXX
 #systemProp.https.proxyPassword=XXXXX
 systemProp.https.nonProxyHosts=nexus.ssi.govt.nz|localhost|127.0.0.1
+```
 
 2. EDIT gradle-wrapper.properties FILE to download via http rather than https to allow gradle wrapper to bootstrap gradle
 
+```
 C:\Java\workspace\<project>\gradle\wrapper
 #distributionUrl=https\://services.gradle.org/distributions/gradle-2.12-bin.zip
 distributionUrl=http\://services.gradle.org/distributions/gradle-2.12-bin.zip
-
+```
 
 3. EDIT build.gradle FILE 
 
 if your build.gradle file contains a buildscript section you'll probably need to get that to download directly from repository via http rather than https
 
+```
 buildscript {
   repositories {
         //jcenter()
@@ -152,12 +155,15 @@ buildscript {
    }
    ...
 }
+```
 
 your standard repository list should point at nexus/artificatory although you can set this up as above
 
+```
 repositories {
     //jcenter()
     maven {
 		url "http://nexus.ssi.govt.nz/content/groups/public"
 	}
 }
+```
