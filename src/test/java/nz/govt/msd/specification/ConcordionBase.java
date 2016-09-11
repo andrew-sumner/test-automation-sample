@@ -39,9 +39,6 @@ public abstract class ConcordionBase implements BrowserBasedTest {
 	private static List<Browser> browsers = new ArrayList<Browser>();
 	private static ThreadLocal<Browser> browser = new ThreadLocal<Browser>();
 
-	@Extension 
-	private final StoryboardExtension storyboard = new StoryboardExtension();
-	
 	@Extension
 	private final EnvironmentExtension footer = new EnvironmentExtension(this.getClass().getName().replace(ConcordionBase.class.getPackage().getName() + ".", ""));
 
@@ -96,12 +93,5 @@ public abstract class ConcordionBase implements BrowserBasedTest {
 		}
 
 		return browser.get();
-	}
-	
-	/**
-	 * @return A reference to the Storyboard extension.
-	 */
-	public StoryboardExtension getStoryboard() {
-		return storyboard;
 	}
 }

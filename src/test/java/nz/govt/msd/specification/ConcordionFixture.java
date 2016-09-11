@@ -14,6 +14,7 @@ import org.concordion.api.extension.Extension;
 import org.concordion.ext.LogbackLogMessenger;
 import org.concordion.ext.LoggingFormatterExtension;
 import org.concordion.ext.LoggingTooltipExtension;
+import org.concordion.ext.StoryboardExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.concordion.slf4j.ext.ReportLogger;
 import org.concordion.slf4j.ext.ReportLoggerFactory;
@@ -35,12 +36,15 @@ public abstract class ConcordionFixture extends ConcordionBase {
 	private final ReportLogger logger = ReportLoggerFactory.getReportLogger(this.getClass().getName());
 	private final Logger tooltipLogger = LoggerFactory.getLogger("TOOLTIP_" + this.getClass().getName());
 
-	@Extension private final LoggingTooltipExtension tooltipExtension = new LoggingTooltipExtension(new LogbackLogMessenger(tooltipLogger.getName(), Level.ALL, true, "%msg%n"));
-//	@Extension private final ExceptionHtmlCaptureExtension htmlCapture = new ExceptionHtmlCaptureExtension(getStoryboard(), getBrowser());
-
+	@Extension 
+	private final StoryboardExtension storyboard = new StoryboardExtension();
+	
 	@Extension
 	private final LoggingFormatterExtension loggerExtension = new LoggingFormatterExtension()
 			.registerListener(new org.concordion.ext.StoryboardLogListener(getStoryboard()));
+	
+	@Extension private final LoggingTooltipExtension tooltipExtension = new LoggingTooltipExtension(new LogbackLogMessenger(tooltipLogger.getName(), Level.ALL, true, "%msg%n"));
+//	@Extension private final ExceptionHtmlCaptureExtension htmlCapture = new ExceptionHtmlCaptureExtension(getStoryboard(), getBrowser());
 
 	@ConcordionScoped(Scope.SPECIFICATION)
 	private ScopedObjectHolder<DataCleanupHelper> dataHolder = new ScopedObjectHolder<DataCleanupHelper>() {
@@ -58,7 +62,14 @@ public abstract class ConcordionFixture extends ConcordionBase {
 	public ReportLogger getLogger() {
 		return logger;
 	}
-
+	
+	/**
+	 * @return A reference to the Storyboard extension.
+	 */
+	public StoryboardExtension getStoryboard() {
+		return storyboard;
+	}
+	
 	@BeforeSpecification
 	private final void beforeSpecification() {
 		// This is the name that can be given to the RunSingleTest job in Jenkins
