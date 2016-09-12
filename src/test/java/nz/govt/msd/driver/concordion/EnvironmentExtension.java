@@ -63,9 +63,9 @@ public class EnvironmentExtension implements ConcordionExtension, SpecificationP
 
 	private void appendEnviromentToFooter(Element leftFooter) {
 		Element anchor = new Element("a");
-		anchor.addAttribute("href", AppConfig.getLoginUrl());
+		anchor.addAttribute("href", AppConfig.getGoogleUrl());
 		anchor.addAttribute("style", "text-decoration: none; color: #89C;");
-		anchor.appendText(AppConfig.getBaseUrl());
+		anchor.appendText(AppConfig.getGoogleUrl());
 
 		leftFooter.appendText(AppConfig.getEnvironment().toUpperCase() + " (");
 		leftFooter.appendChild(anchor);

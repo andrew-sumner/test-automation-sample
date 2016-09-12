@@ -12,7 +12,6 @@ import org.concordion.api.extension.Extension;
 import org.concordion.api.extension.Extensions;
 import org.concordion.api.option.ConcordionOptions;
 import org.concordion.api.option.MarkdownExtensions;
-import org.concordion.ext.StoryboardExtension;
 import org.concordion.ext.TimestampFormatterExtension;
 import org.concordion.ext.runtotals.RunTotalsExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
@@ -41,16 +40,6 @@ public abstract class ConcordionBase implements BrowserBasedTest {
 
 	@Extension
 	private final EnvironmentExtension footer = new EnvironmentExtension(this.getClass().getName().replace(ConcordionBase.class.getPackage().getName() + ".", ""));
-
-// Attempt 1: 
-//	@ConcordionScoped(Scope.SPECIFICATION)
-//	private ScopedObjectHolder<BrowserListener> browserListenerHolder = new ScopedObjectHolder<BrowserListener>() {
-//		@Override
-//		protected BrowserListener create() {
-//			return new StorycardCreatingBrowserListener(getStoryboard());
-//		}
-//	};
-	
 	
 	static {
 		LogbackAdaptor.logInternalStatus();
@@ -58,9 +47,9 @@ public abstract class ConcordionBase implements BrowserBasedTest {
 
 		// Set the proxy rules for all rest requests made during the test run
 		HttpEasy.withDefaults()
-			.allowAllHosts()
-			.trustAllCertificates()
-			.baseUrl(AppConfig.getBaseUrl());
+				.allowAllHosts()
+				.trustAllCertificates();
+		// .baseUrl(AppConfig.getBaseUrl());
 
 		if (AppConfig.isProxyRequired()) {
 			HttpEasy.withDefaults()

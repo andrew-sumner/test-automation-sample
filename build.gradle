@@ -6,22 +6,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenLocal()
-	maven {
-		url = 'http://oss.jfrog.org/oss-snapshot-local'
-	}
-	mavenCentral()
-	/*
-	maven {
-		url = 'http://oss.jfrog.org/oss-snapshot-local'
-	}
 	maven {
 		url "http://nexus.ssi.govt.nz/content/repositories/ossjfrog-snapshots/"
 	}
 	maven {
 		url "http://nexus.ssi.govt.nz/content/groups/public"
 	}
-	*/
 }
 
 configurations {
@@ -45,16 +35,7 @@ ext {
 	seleniumVersion = '2.53.1'
 }
 
-sourceSets {
-	generated
-}
-
 dependencies {
-    //generatedCompile configurations.compile
-    //generatedRuntime configurations.runtime
-    testCompile sourceSets.generated.output
-    testRuntime sourceSets.generated.output
-    
     javaDoclet 'ch.raffael.pegdown-doclet:pegdown-doclet:1.2.1'
 
     compile files('libs/ojdbc7.jar')
@@ -69,29 +50,13 @@ dependencies {
     compile "org.seleniumhq.selenium:selenium-chrome-driver:${seleniumVersion}"
     compile "org.seleniumhq.selenium:selenium-ie-driver:${seleniumVersion}"
     
-    // Applitools-Eyes
-    //compile ('com.applitools:eyes-selenium-java:2.30') {
-    //    exclude group: 'org.seleniumhq.selenium', module: 'selenium-java'
-    //}
-    //
-	//Reporting - note includes jsoup
-	//compile 'com.relevantcodes:extentreports:2.40'
-	
 	compile 'org.jsoup:jsoup:1.8.3'
 	
     // Html Elements
     compile ('ru.yandex.qatools.htmlelements:htmlelements-java:1.15') {
         exclude group: 'org.seleniumhq.selenium', module: 'selenium-java'
     }
-    
-    //compile ('ru.yandex.qatools.ashot:ashot:1.5.2') {
-    //    exclude group: 'org.seleniumhq.selenium', module: 'selenium-java'
-    //}
-    
-	// Logging
-	compile 'org.slf4j:slf4j-api:1.7.18'
-	compile 'ch.qos.logback:logback-classic:1.1.6'
-	
+
     // Concordion 
     compile 'org.concordion:concordion:2.0.3'
     compile 'org.concordion:concordion-parallel-run-extension:1.1.0'

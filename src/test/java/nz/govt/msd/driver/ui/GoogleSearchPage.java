@@ -6,6 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
+import nz.govt.msd.AppConfig;
 import nz.govt.msd.driver.BrowserBasedTest;
 
 /**
@@ -28,7 +29,7 @@ public class GoogleSearchPage extends PageObject<GoogleSearchPage> {
      * Opens the Google Search Page.
      */
     public static GoogleSearchPage open(BrowserBasedTest test) {
-    	test.getBrowser().getDriver().get("http://www.google.com");
+		test.getBrowser().getDriver().get(AppConfig.getGoogleUrl());
     	
     	return new GoogleSearchPage(test);
     }
